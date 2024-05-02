@@ -1,0 +1,276 @@
+[{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd73870b"
+  },
+  "name": "Bali",
+  "description": "The Island of Love",
+  "activities": [
+    "Beach Relaxation",
+    "Temple Visits",
+    "Surfing"
+  ],
+  "photos": [
+    "https://media-cdn.tripadvisor.com/media/photo-m/1280/2a/c7/90/94/caption.jpg",
+    "https://imageio.forbes.com/specials-images/imageserve/675172642/pura-ulun-danu-bratan-temple-in-Bali-/960x0.jpg?format=jpg&width=960",
+    "https://finnsbeachclub.com/wp-content/uploads/2023/11/7xm127460-1024x694.jpg",
+    "https://onecms-res.cloudinary.com/image/upload/s--SnpzqhBL--/c_fill,g_auto,h_468,w_830/fl_relative,g_south_east,l_mediacorp:cna:watermark:2021-08:cna,w_0.1/f_auto,q_auto/v1/mediacorp/cna/image/2024/04/13/picture0.jpg?itok=cOoAL3T3"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd73870c"
+  },
+  "name": "Yogyakarta",
+  "description": "Cultural Heart of Java",
+  "activities": [
+    "Visit Borobudur",
+    "Explore Kraton Palace",
+    "Try Batik Art"
+  ],
+  "photos": [
+    "https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/java/di-yogyakarta/image11.jpg",
+    "yogyakarta2.jpg",
+    "yogyakarta3.jpg"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd73870d"
+  },
+  "name": "Komodo Island",
+  "description": "Home of the Komodo Dragon",
+  "activities": [
+    "Komodo Dragon Safari",
+    "Snorkeling",
+    "Hiking"
+  ],
+  "photos": [
+    "komodo1.jpg",
+    "komodo2.jpg",
+    "komodo3.jpg"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd73870e"
+  },
+  "name": "Raja Ampat",
+  "description": "Paradise for Divers",
+  "activities": [
+    "Diving",
+    "Island Hopping",
+    "Bird Watching"
+  ],
+  "photos": [
+    "rajaampat1.jpg",
+    "rajaampat2.jpg",
+    "rajaampat3.jpg"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd738711"
+  },
+  "name": "Berlin",
+  "description": "Capital City with Rich History",
+  "activities": [
+    "Visit Brandenburg Gate",
+    "Explore Museum Island",
+    "Walk along the Berlin Wall"
+  ],
+  "photos": [
+    "https://www.kreiszeitung.de/assets/images/28/403/28403717-brandenburger-tor-wahrzeichen-hauptstadt-berlin-abendsonne-2l6bhKL1aFec.jpg",
+    "https://www.urlaubstracker.de/wp-content/uploads/2018/12/berlin-fernsehturm.jpg",
+    "https://a.cdn-hotels.com/gdcs/production50/d44/571ba00b-11cd-4a54-9f2a-5b38da2bc89e.jpg?impolicy=fcrop&w=800&h=533&q=medium"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd738712"
+  },
+  "name": "Munich",
+  "description": "Bavarian Charm and Oktoberfest",
+  "activities": [
+    "Visit Marienplatz",
+    "Explore Neuschwanstein Castle",
+    "Enjoy Oktoberfest"
+  ],
+  "photos": [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_München.jpg/1200px-Stadtbild_München.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRKbf6Q3nn_XG_0f-tiU-hkQBda4vB8U13vcDq_DcxAQ&s",
+    "https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt8894cc53ad094800/64287441df624a5d304d32ee/Bayern_Munich_celebrate_Dortmund_2022-23.jpg?auto=webp&format=pjpg&width=3840&quality=60"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd738713"
+  },
+  "name": "Hamburg",
+  "description": "Gateway to the World",
+  "activities": [
+    "Visit Miniatur Wunderland",
+    "Explore Speicherstadt",
+    "Take a harbor cruise"
+  ],
+  "photos": [
+    "https://www.merian.de/uploads/media/1920x1080/00/2980-Lichterherz-auf-der-Elbphilharmonie.jpg?v=1-0",
+    "https://all.accor.com/middleware/media/1385704469111/1623160844674/hamburg_sunset_1920x1080,0.jpg",
+    "https://www.urlaubstracker.de/wp-content/uploads/2019/02/hamburg-speicherstadt-kanaele-1000x666.jpg"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd738714"
+  },
+  "name": "Heidelberg",
+  "description": "Historic University Town",
+  "activities": [
+    "Visit Heidelberg Castle",
+    "Explore Old Town",
+    "Take a Philosopher's Walk"
+  ],
+  "photos": [
+    "https://mein.toubiz.de/api/v1/media/deaca1d6-3b81-4545-a40c-ce66e8921e9d/view",
+    "https://www.eat-the-world.com/wp-content/uploads/2019/10/heidelberg-altstadt-stadtrundgang-2.jpg",
+    "https://placesofgermany.de/wp-content/uploads/2023/04/Heidelberg-Schloss.webp"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd738716"
+  },
+  "name": "Tokyo",
+  "description": "The Capital City of Japan",
+  "activities": [
+    "Visit Tokyo Tower",
+    "Explore Shibuya Crossing",
+    "Experience Asakusa"
+  ],
+  "photos": [
+    "https://media.cntraveler.com/photos/63482b255e7943ad4006df0b/16:9/w_2560%2Cc_limit/tokyoGettyImages-1031467664.jpeg",
+    "https://media.istockphoto.com/id/1390815938/photo/tokyo-city-in-japan.webp?b=1&s=170667a&w=0&k=20&c=YVI8iGWf-w_cLyQNcWA57Ll9eXv_s_SHfoM0MufEMMQ=",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZztTcFfQQYYRS4j0Jfzvf9_cS4yXzWXqQCt2kNHy6PfHBTlaeM4t-LEdsanx92GHeVkU&usqp=CAU"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd738717"
+  },
+  "name": "Kyoto",
+  "description": "Historical City with Temples and Gardens",
+  "activities": [
+    "Visit Kinkaku-ji (Golden Pavilion)",
+    "Explore Fushimi Inari Shrine",
+    "Stroll through Gion District"
+  ],
+  "photos": [
+    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fboutiquejapan.com%2Fkyoto-guide%2F&psig=AOvVaw1WRYCTNHiRZmvWYrLcdrEL&ust=1713870772783000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMCH5KbY1YUDFQAAAAAdAAAAABAE"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd738718"
+  },
+  "name": "Osaka",
+  "description": "The Kitchen of Japan",
+  "activities": [
+    "Visit Osaka Castle",
+    "Explore Dotonbori",
+    "Experience Universal Studios Japan"
+  ],
+  "photos": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd738719"
+  },
+  "name": "Hiroshima",
+  "description": "City of Peace and History",
+  "activities": [
+    "Visit Hiroshima Peace Memorial Park",
+    "Explore Itsukushima Shrine on Miyajima Island",
+    "Learn about WWII History"
+  ],
+  "photos": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd73871b"
+  },
+  "name": "D14",
+  "description": "Sad Place",
+  "activities": [
+    "Coding"
+  ],
+  "photos": [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLXQYdm5Ou_thY95cZiH3tW6Q_n8JpIGucjpga0huvmg&s",
+    "d142.jpg",
+    "d143.jpg"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd73871c"
+  },
+  "name": "Mensa",
+  "description": "Sad Food",
+  "activities": [
+    "Eat"
+  ],
+  "photos": [
+    "https://fbw.h-da.de/fileadmin/_processed_/d/5/csm_Mensa_Schoefferstrasse_9a458448d5.jpg",
+    "d142.jpg",
+    "d143.jpg"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd73871e"
+  },
+  "name": "New York",
+  "description": "The City That Never Sleeps",
+  "activities": [
+    "Visit Times Square",
+    "Explore Central Park",
+    "See the Statue of Liberty"
+  ],
+  "photos": [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV5E2LjLMALpRmdFlWX6CYrmhhK582HPnjzxGGanfvwQ&s",
+    "https://images.ctfassets.net/bth3mlrehms2/3iFoOTp2EdMqu16ppNCwFp/7e96e3980306804a41dcd15f7477d425/iStock-599766748.jpg?w=3865&h=2576&fl=progressive&q=50&fm=jpg",
+    "https://media.cntraveler.com/photos/63483e15ef943eff59de603a/3:2/w_3000,h_2000,c_limit/New%20York%20City_GettyImages-1347979016.jpg",
+    "https://www.state.gov/wp-content/uploads/2022/01/shutterstock_248799484-scaled.jpg"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd73871f"
+  },
+  "name": "Los Angeles",
+  "description": "City of Angels",
+  "activities": [
+    "Visit Hollywood",
+    "Explore Venice Beach",
+    "See Disneyland"
+  ],
+  "photos": [
+    "https://upload.wikimedia.org/wikipedia/commons/3/32/20190616154621%21Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg",
+    "losangeles2.jpg",
+    "losangeles3.jpg"
+  ],
+  "__v": 0
+}]

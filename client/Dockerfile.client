@@ -1,0 +1,31 @@
+# Use the official Node.js image as the base image
+FROM node:16 AS build_image
+
+# Set the working directory in the container
+WORKDIR /app/reactapp
+
+# Install dependencies
+COPY package*.json ./
+
+RUN npm install
+
+# Copy the rest of the client code
+COPY . .
+
+# Build the React app
+RUN npm run build
+
+FROM node:16 as production_image
+WORKDIR /app/reactapp
+
+COPY --from=build_image app/reactapp/dist/ app/reactapp/dist/
+
+EXPOSE 8080
+
+
+COPY package*.json ./
+COPY vite.config.ts ./
+RUN npm install
+RUN npm install typescript
+EXPOSE 8080
+CMD [ "npm", "run" , "preview" ]

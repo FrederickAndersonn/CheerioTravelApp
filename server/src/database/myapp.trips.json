@@ -1,0 +1,172 @@
+[{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd738722"
+  },
+  "name": "German Adventure",
+  "description": "Explore the beauty of Germany",
+  "imageUrl": "https://www.deutschland.de/sites/default/files/media/image/shutterstock_410747884.jpg",
+  "date": {
+    "$date": "2024-04-14T00:00:00.000Z"
+  },
+  "participants": [
+    "Alicia,Boba"
+  ],
+  "destinations": [
+    {
+      "$oid": "6626475d5f04e7d7bd738711"
+    },
+    {
+      "$oid": "6626475d5f04e7d7bd738712"
+    },
+    {
+      "$oid": "6626475d5f04e7d7bd738713"
+    },
+    {
+      "$oid": "6626475d5f04e7d7bd738714"
+    }
+  ],
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd738723"
+  },
+  "name": "Indonesian Discovery",
+  "description": "Discover the wonders of Indonesia",
+  "imageUrl": "https://www.indonesia.travel/content/dam/indtravelrevamp/home-revamp/JF-labuanbajo.jpg",
+  "date": {
+    "$date": "2024-09-10T00:00:00.000Z"
+  },
+  "participants": [
+    "Charlie",
+    "David",
+    "Frederick",
+    "\" \"",
+    "Test"
+  ],
+  "destinations": [
+    {
+      "$oid": "6626475d5f04e7d7bd73870b"
+    },
+    {
+      "$oid": "6626475d5f04e7d7bd73870c"
+    }
+  ],
+  "__v": 5
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd738724"
+  },
+  "name": "Japanese Journey",
+  "description": "Experience the culture of Japan",
+  "imageUrl": "https://res.klook.com/image/upload/q_85/c_fill,w_750/v1674030135/blog/bnbtltnp5nqbdevfcbmn.jpg",
+  "date": {
+    "$date": "2024-10-05T00:00:00.000Z"
+  },
+  "participants": [
+    "Eve",
+    "Frank"
+  ],
+  "destinations": [
+    {
+      "$oid": "6626475d5f04e7d7bd738716"
+    },
+    {
+      "$oid": "6626475d5f04e7d7bd738717"
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd738725"
+  },
+  "name": "American Wonders",
+  "description": "Experience the culture of the United States",
+  "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIoMemYOrp3mRwRH0jN3NuMcZ7E9O8gSnaNa5GGwDgQg&s",
+  "date": {
+    "$date": "2024-11-15T00:00:00.000Z"
+  },
+  "participants": [
+    "George",
+    "Harry"
+  ],
+  "destinations": [
+    {
+      "$oid": "6626475d5f04e7d7bd73871e"
+    },
+    {
+      "$oid": "6626475d5f04e7d7bd73871f"
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626475d5f04e7d7bd738726"
+  },
+  "name": "HDA Tour",
+  "description": "Tour HDA Destinations",
+  "imageUrl": "https://img.echo-online.de/lokales/darmstadt/ncmyf1-HDA-061222/alternates/LANDSCAPE_480/HDA%20061222",
+  "date": {
+    "$date": "2024-12-01T00:00:00.000Z"
+  },
+  "participants": [
+    "test"
+  ],
+  "destinations": [
+    {
+      "$oid": "6626475d5f04e7d7bd73871b"
+    },
+    {
+      "$oid": "6626475d5f04e7d7bd73871c"
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626ab3ccd2eadc28d7e1257"
+  },
+  "name": "Indonesian Sea",
+  "description": "Discover the seas of Indonesia",
+  "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJwiC91WGWMBSRHIKlreDrrZ6aItTpihr68Pl-yJ_-aQ&s",
+  "date": {
+    "$date": "2024-04-28T00:00:00.000Z"
+  },
+  "participants": [
+    "frederick",
+    "Anton"
+  ],
+  "destinations": [
+    {
+      "$oid": "6626475d5f04e7d7bd73870e"
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626c947cd2eadc28d7e1507"
+  },
+  "name": "Japan War and Cuisine",
+  "description": "historical yet delicious",
+  "imageUrl": "https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/00/a0000370/img/basic/a0000370_main.jpg",
+  "date": {
+    "$date": "2025-02-15T00:00:00.000Z"
+  },
+  "participants": [
+    "Frederick",
+    "Matthew"
+  ],
+  "destinations": [
+    {
+      "$oid": "6626475d5f04e7d7bd738718"
+    },
+    {
+      "$oid": "6626475d5f04e7d7bd738719"
+    }
+  ],
+  "__v": 0
+}]
