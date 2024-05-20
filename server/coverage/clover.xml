@@ -1,35 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1713878087556" clover="3.2.0">
-  <project timestamp="1713878087556" name="All files">
-    <metrics statements="157" coveredstatements="137" conditionals="20" coveredconditionals="14" methods="39" coveredmethods="38" elements="216" coveredelements="189" complexity="0" loc="157" ncloc="157" packages="3" files="5" classes="5"/>
+<coverage generated="1716212783971" clover="3.2.0">
+  <project timestamp="1716212783971" name="All files">
+    <metrics statements="170" coveredstatements="149" conditionals="22" coveredconditionals="16" methods="42" coveredmethods="40" elements="234" coveredelements="205" complexity="0" loc="170" ncloc="170" packages="3" files="6" classes="6"/>
     <package name="src">
-      <metrics statements="13" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
-      <file name="testindex.ts" path="/Users/frederickanderson/Desktop/myProjects/FWE_Project/server/src/testindex.ts">
+      <metrics statements="26" coveredstatements="24" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="4"/>
+      <file name="destinationindex.ts" path="/Users/frederickanderson/Desktop/myProjects/CheerioTravelApp/server/src/destinationindex.ts">
         <metrics statements="13" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="9" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="24" count="2" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+      </file>
+      <file name="tripindex.ts" path="/Users/frederickanderson/Desktop/myProjects/CheerioTravelApp/server/src/tripindex.ts">
+        <metrics statements="13" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.models">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="Destination.ts" path="/Users/frederickanderson/Desktop/myProjects/FWE_Project/server/src/models/Destination.ts">
+      <file name="Destination.ts" path="/Users/frederickanderson/Desktop/myProjects/CheerioTravelApp/server/src/models/Destination.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="2" count="2" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
         <line num="19" count="2" type="stmt"/>
       </file>
-      <file name="Trip.ts" path="/Users/frederickanderson/Desktop/myProjects/FWE_Project/server/src/models/Trip.ts">
+      <file name="Trip.ts" path="/Users/frederickanderson/Desktop/myProjects/CheerioTravelApp/server/src/models/Trip.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="2" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
@@ -38,7 +54,7 @@
     </package>
     <package name="src.routes">
       <metrics statements="138" coveredstatements="119" conditionals="18" coveredconditionals="12" methods="36" coveredmethods="36"/>
-      <file name="destinations.ts" path="/Users/frederickanderson/Desktop/myProjects/FWE_Project/server/src/routes/destinations.ts">
+      <file name="destinations.ts" path="/Users/frederickanderson/Desktop/myProjects/CheerioTravelApp/server/src/routes/destinations.ts">
         <metrics statements="46" coveredstatements="41" conditionals="4" coveredconditionals="3" methods="12" coveredmethods="12"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
@@ -87,7 +103,7 @@
         <line num="84" count="1" type="stmt"/>
         <line num="89" count="2" type="stmt"/>
       </file>
-      <file name="trips.ts" path="/Users/frederickanderson/Desktop/myProjects/FWE_Project/server/src/routes/trips.ts">
+      <file name="trips.ts" path="/Users/frederickanderson/Desktop/myProjects/CheerioTravelApp/server/src/routes/trips.ts">
         <metrics statements="92" coveredstatements="78" conditionals="14" coveredconditionals="9" methods="24" coveredmethods="24"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>

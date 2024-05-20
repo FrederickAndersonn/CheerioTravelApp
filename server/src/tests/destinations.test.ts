@@ -1,6 +1,6 @@
 import request from 'supertest';
 import mongoose from 'mongoose';
-import app from '../testindex'; // Assuming your Express app is exported as 'app'
+import app from '../destinationindex'; // Assuming your Express app is exported as 'app'
 import  Destination  from '../models/Destination';
 
 

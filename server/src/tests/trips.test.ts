@@ -1,6 +1,6 @@
 import request from 'supertest';
 import mongoose from 'mongoose';
-import app from '../testindex';
+import app from '../tripindex';
 import Trip from '../models/Trip';
 import Destination from '../models/Destination';
 
