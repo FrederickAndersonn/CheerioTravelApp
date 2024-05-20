@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import 'react-typist/dist/Typist.css';
 import logo from '../../assets/logowhite.png';
 import { Data } from './data';
 import TriviaPopup from '../Trivia';
