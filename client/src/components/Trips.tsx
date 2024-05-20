@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { searchTrips, getTripsByDestination, getAllDestinations } from '../services/api';
-import Layout from './Layout';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  searchTrips,
+  getTripsByDestination,
+  getAllDestinations,
+} from "../services/api";
+import Layout from "./Layout";
 
 const Trips = () => {
   const navigate = useNavigate();
   const [trips, setTrips] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [dateFilter, setDateFilter] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [dateFilter, setDateFilter] = useState("");
   const [destinations, setDestinations] = useState([]);
-  const [selectedDestination, setSelectedDestination] = useState('');
+  const [selectedDestination, setSelectedDestination] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,10 +35,10 @@ const Trips = () => {
   };
 
   const handleDestinationChange = async (destinationId: string) => {
-    if (destinationId === '') {
+    if (destinationId === "") {
       const data = await searchTrips({ name: searchTerm, date: dateFilter });
       setTrips(data);
-      setSelectedDestination('');
+      setSelectedDestination("");
     } else {
       setSelectedDestination(destinationId);
       const tripsByDestination = await getTripsByDestination(destinationId);
@@ -65,7 +69,9 @@ const Trips = () => {
             />
           </div>
           <div className="relative">
-            <label htmlFor="destination" className="mr-2">Search by Destinations:</label>
+            <label htmlFor="destination" className="mr-2">
+              Search by Destinations:
+            </label>
             <select
               id="destination"
               className="border p-2 rounded"
@@ -85,9 +91,22 @@ const Trips = () => {
           {trips.map((trip: any) => (
             <div key={trip._id} className="border p-4 rounded">
               <h2 className="text-xl font-bold">{trip.name}</h2>
-              <img src={trip.imageUrl} alt={trip.name} className="my-2 w-full h-32 object-cover" />
-              <p>Date: {trip.date.split('T')[0].split('-').reverse().join('/')}</p>
-              <p>Participants: {trip.participants.filter((participant : any) => participant !== "").length}</p>
+              <img
+                src={trip.imageUrl}
+                alt={trip.name}
+                className="my-2 w-full h-32 object-cover"
+              />
+              <p>
+                Date: {trip.date.split("T")[0].split("-").reverse().join("/")}
+              </p>
+              <p>
+                Participants:{" "}
+                {
+                  trip.participants.filter(
+                    (participant: any) => participant !== ""
+                  ).length
+                }
+              </p>
               <button
                 className="bg-custom-black text-white px-4 py-2 rounded mt-2"
                 onClick={() => handleExploreClick(trip)}

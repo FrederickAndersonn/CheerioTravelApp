@@ -1,62 +1,71 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/logowhite.png';
-import { Data } from './data';
-import TriviaPopup from '../Trivia';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import logo from "../../assets/logowhite.png";
+import { Data } from "./data";
+import TriviaPopup from "../Trivia";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
   const [currentImage, setCurrentImage] = useState(0);
   const [overlayOpacity, setOverlayOpacity] = useState(0);
   const [showTriviaPopup, setShowTriviaPopup] = useState<boolean>(false);
-  const [triviaQuestion, setTriviaQuestion] = useState<string>('');
-  const [triviaAnswer, setTriviaAnswer] = useState<string>('');
+  const [triviaQuestion, setTriviaQuestion] = useState<string>("");
+  const [triviaAnswer, setTriviaAnswer] = useState<string>("");
   const [triviaChoices, setTriviaChoices] = useState<string[]>([]);
   const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
   const [access, setAccess] = useState(false);
 
- const fetchTriviaQuestion = async () => {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 10000); // Timeout after 10 seconds
-  try {
-    const response = await fetch('https://opentdb.com/api.php?amount=1&category=18&difficulty=easy&type=multiple', {
-      signal: controller.signal,
-    });
+  const fetchTriviaQuestion = async () => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // Timeout after 10 seconds
+    try {
+      const response = await fetch(
+        "https://opentdb.com/api.php?amount=1&category=18&difficulty=easy&type=multiple",
+        {
+          signal: controller.signal,
+        }
+      );
 
-    clearTimeout(timeoutId); // Clear the timeout
+      clearTimeout(timeoutId); // Clear the timeout
 
-    if (!response.ok) {
-      setAccess(true);
-      throw new Error('Failed to fetch trivia question');
+      if (!response.ok) {
+        setAccess(true);
+        throw new Error("Failed to fetch trivia question");
+      }
+
+      const data = await response.json();
+      const question = data.results[0].question;
+      const correctAnswer = data.results[0].correct_answer;
+      const choices = [
+        ...data.results[0].incorrect_answers,
+        correctAnswer,
+      ].sort(() => Math.random() - 0.5);
+
+      setTriviaQuestion(question);
+      setTriviaAnswer(correctAnswer);
+      setTriviaChoices(choices);
+    } catch (error) {
+      if ((error as Error).name !== "AbortError") {
+        console.error("Error fetching trivia question:", error);
+      }
     }
-
-    const data = await response.json();
-    const question = data.results[0].question;
-    const correctAnswer = data.results[0].correct_answer;
-    const choices = [...data.results[0].incorrect_answers, correctAnswer].sort(() => Math.random() - 0.5);
-
-    setTriviaQuestion(question);
-    setTriviaAnswer(correctAnswer);
-    setTriviaChoices(choices);
-  } catch (error) {
-    if ((error as Error).name !== 'AbortError') {
-      console.error('Error fetching trivia question:', error);
-    }
-  }
-};
+  };
 
   const handleAdminClick = async () => {
-    console.log('Admin clicked');
+    console.log("Admin clicked");
     await fetchTriviaQuestion();
     setShowTriviaPopup(true);
   };
 
   const checkAnswer = (answer: string) => {
-    if (answer.toLowerCase() === triviaAnswer.toLowerCase() || access===true) {
+    if (
+      answer.toLowerCase() === triviaAnswer.toLowerCase() ||
+      access === true
+    ) {
       setShowSuccessMessage(true);
       setTimeout(() => {
         setShowSuccessMessage(false);
-        navigate('/Admin');
+        navigate("/Admin");
       }, 2000);
       setShowTriviaPopup(false);
     } else {
@@ -81,15 +90,15 @@ const Home: React.FC = () => {
   const backgroundImage = Data[currentImage].image;
 
   return (
-    <div 
-      className="relative flex items-center justify-between h-screen bg-cover bg-center transition-opacity duration- ease-in-out" 
+    <div
+      className="relative flex items-center justify-between h-screen bg-cover bg-center transition-opacity duration- ease-in-out"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       {showTriviaPopup && (
-        <TriviaPopup 
-          onClose={() => setShowTriviaPopup(false)} 
-          onAnswer={checkAnswer} 
-          question={triviaQuestion} 
+        <TriviaPopup
+          onClose={() => setShowTriviaPopup(false)}
+          onAnswer={checkAnswer}
+          question={triviaQuestion}
           choices={triviaChoices}
         />
       )}
@@ -98,17 +107,17 @@ const Home: React.FC = () => {
           <h2 className="text-white text-4xl font-bold">YOU ARE WORTHY!</h2>
         </div>
       )}
-      <div 
-        className="absolute inset-0 bg-black transition-opacity duration-500" 
+      <div
+        className="absolute inset-0 bg-black transition-opacity duration-500"
         style={{ opacity: overlayOpacity }}
       ></div>
-      <div className=' flex flex-col z-10 w-1/3 backdrop-filter backdrop-blur-md h-full p-16 justify-center items-center'> 
+      <div className=" flex flex-col z-10 w-1/3 backdrop-filter backdrop-blur-md h-full p-16 justify-center items-center">
         <img src={logo} alt="Logo" className="w-60" />
-        <p className='text-white font-bold text-4xl my-16'>Blue Skies Ahead</p>
-        <div className='flex justify-center mt-10 z-10'>
+        <p className="text-white font-bold text-4xl my-16">Blue Skies Ahead</p>
+        <div className="flex justify-center mt-10 z-10">
           <button
             className="px-6 py-2 bg-custom-black text-white rounded-md m-10 text-xl justify-end items-center transform hover:scale-105 hover:bg-red-500 hover:shadow-lg transition duration-300 ease-in-out"
-            onClick={() => navigate('/trips')}
+            onClick={() => navigate("/trips")}
           >
             User
           </button>
@@ -119,11 +128,11 @@ const Home: React.FC = () => {
           >
             Admin
           </button>
-        </div>   
-      </div> 
-      <div className='z-10 w-2/3 h-full flex flex-col justify-end items-end pr-16 pb-16'>
-        <h1 className='text-white text-4xl'>{city}</h1>
-        <h1 className='text-white font-extrabold text-9xl'>{country}</h1>
+        </div>
+      </div>
+      <div className="z-10 w-2/3 h-full flex flex-col justify-end items-end pr-16 pb-16">
+        <h1 className="text-white text-4xl">{city}</h1>
+        <h1 className="text-white font-extrabold text-9xl">{country}</h1>
       </div>
     </div>
   );

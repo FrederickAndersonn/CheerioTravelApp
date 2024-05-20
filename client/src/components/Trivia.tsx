@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface TriviaPopupProps {
   onClose: () => void;
@@ -7,19 +7,26 @@ interface TriviaPopupProps {
   choices: string[];
 }
 
-const TriviaPopup: React.FC<TriviaPopupProps> = ({ onClose, onAnswer, question, choices }) => {
-  const [selectedAnswer, setSelectedAnswer] = useState<string>('');
+const TriviaPopup: React.FC<TriviaPopupProps> = ({
+  onClose,
+  onAnswer,
+  question,
+  choices,
+}) => {
+  const [selectedAnswer, setSelectedAnswer] = useState<string>("");
 
   const handleSubmit = () => {
     onAnswer(selectedAnswer);
-    setSelectedAnswer('');
+    setSelectedAnswer("");
   };
 
   return (
     <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white p-8 rounded-md">
-        <h2 className="text-xl font-bold">Are you worthy to access this power?!</h2>
-        <p className='mb-4'>Answer correctly to get in</p>
+        <h2 className="text-xl font-bold">
+          Are you worthy to access this power?!
+        </h2>
+        <p className="mb-4">Answer correctly to get in</p>
         <p dangerouslySetInnerHTML={{ __html: question }}></p>
         <div className="mt-4">
           {choices.map((choice, index) => (
@@ -33,7 +40,10 @@ const TriviaPopup: React.FC<TriviaPopupProps> = ({ onClose, onAnswer, question, 
                 onChange={(e) => setSelectedAnswer(e.target.value)}
                 className="mr-2"
               />
-              <label htmlFor={`choice-${index}`} dangerouslySetInnerHTML={{ __html: choice }}></label>
+              <label
+                htmlFor={`choice-${index}`}
+                dangerouslySetInnerHTML={{ __html: choice }}
+              ></label>
             </div>
           ))}
         </div>

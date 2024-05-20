@@ -1,31 +1,35 @@
-# Use the official Node.js image as the base image
-FROM node:16 AS build_image
+# Use Node.js version 14
+FROM node:14 as build
 
-# Set the working directory in the container
-WORKDIR /app/reactapp
+# Set working directory
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
 # Install dependencies
-COPY package*.json ./
-
 RUN npm install
 
-# Copy the rest of the client code
+# Copy source code
 COPY . .
 
-# Build the React app
+# Build React app
 RUN npm run build
 
-FROM node:16 as production_image
-WORKDIR /app/reactapp
+# Use lightweight Node image for serving
+FROM node:14-alpine
 
-COPY --from=build_image app/reactapp/dist/ app/reactapp/dist/
+# Set working directory
+WORKDIR /app
 
-EXPOSE 8080
+# Copy build from previous stage
+COPY --from=build /usr/src/app/build ./build
 
+# Install serve globally
+RUN npm install -g serve
 
-COPY package*.json ./
-COPY vite.config.ts ./
-RUN npm install
-RUN npm install typescript
-EXPOSE 8080
-CMD [ "npm", "run" , "preview" ]
+# Expose port 80
+EXPOSE 80
+
+# Command to run the server
+CMD ["serve", "-s", "build", "-l", "80"]

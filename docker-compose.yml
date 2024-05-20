@@ -1,18 +1,25 @@
 version: '3'
 
 services:
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile.client
-    ports:
-      - "3001:80"
-    depends_on:
-      - server
-
-  server:
-    build:
+  backend:
+    build: 
       context: ./server
       dockerfile: Dockerfile.server
     ports:
       - "3000:3000"
+    environment:
+      MONGODB_URI: mongodb://test:test@cluster0.v2nfrdi.mongodb.net/myapp?retryWrites=true&w=majority
+    depends_on:
+      - database
+
+  database:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  frontend:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile.client
+    ports:
+      - "80:80"

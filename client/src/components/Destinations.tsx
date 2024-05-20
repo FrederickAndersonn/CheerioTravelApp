@@ -64,7 +64,7 @@ const Destination = () => {
       useEffect(() => {
         const fetchWeather = async () => {
             try {
-                const apiKey = '6c10bec1473d772497f49848894b3180'; // Replace with your OpenWeather API key
+                const apiKey = '6c10bec1473d772497f49848894b3180'; 
 
                 const weatherPromises = loadedDestinations.map(async (destination) => {
                     console.log(destination);
