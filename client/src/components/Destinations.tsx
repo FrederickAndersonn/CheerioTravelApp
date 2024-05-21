@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getDestinationsFromTrip, getDestinationById, getTripById, addParticipantsToTrip } from '../services/api';
+import { getDestinationsFromTrip, getDestinationById, getTripById, addParticipantsToTrip, getWeatherByName } from '../services/api';
 import Layout from '../components/Layout';
 
 const Destination = () => {
@@ -61,21 +61,18 @@ const Destination = () => {
         };
       }, [trip]);
 
+      
       useEffect(() => {
         const fetchWeather = async () => {
             try {
-                const apiKey = '6c10bec1473d772497f49848894b3180'; 
-
                 const weatherPromises = loadedDestinations.map(async (destination) => {
-                    console.log(destination);
-                    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${destination.name}&units=metric&appid=${apiKey}`;
-                    const response = await fetch(apiUrl);
-                    const data = await response.json();
-                    return data;
+                    const weatherData = getWeatherByName(destination.name);
+                    console.log(weatherData);
+                    return weatherData;
                 });
 
-                const weatherData = await Promise.all(weatherPromises);
-                setWeather(weatherData);
+                const weatherResults = await Promise.all(weatherPromises);
+                setWeather(weatherResults);
             } catch (error) {
                 console.error('Error fetching weather data:', error);
             }
@@ -83,6 +80,8 @@ const Destination = () => {
 
         fetchWeather();
     }, [loadedDestinations]);
+    
+    
       
   
   const handleFindOtherTrips = () => {

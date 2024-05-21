@@ -76,3 +76,8 @@ export const getTripsByDestination = async (id: string) => {
   const response = await api.get(`/trips/byDestination/${id}`);
   return response.data;
 };
+
+export const getWeatherByName = async (name: string) => {
+  const response = await api.get(`/weather/${name}`);
+  return response.data;
+};

@@ -105,4 +105,9 @@ export const addParticipantsToTrip = async (id: string, data: any) => {
   return response.data;
 };
 
+export const getWeatherByName = async (name: string) => {
+  const response = await api.get(`/weather/${name}`);
+  return response.data;
+};
+
 
