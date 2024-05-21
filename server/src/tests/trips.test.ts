@@ -170,6 +170,34 @@ describe('Trip API', () => {
     expect(response.body.destinations).toEqual(expect.arrayContaining(destinationIds.map(id => id.toString())));
   });
 
+  it('should not add duplicate destinations to a trip', async () => {
+    // Create a trip with some existing destinations
+    const trip = await Trip.create({
+      name: 'Trip with existing destinations',
+      description: 'Description of trip with existing destinations',
+      imageUrl: 'image-url',
+      date: Date.now(),
+      participants: [],
+      destinations: [destinationIds[0]], // Assume destinationIds[0] already exists in the trip
+    });
+  
+    // Prepare data with both existing and new destinations
+    const requestData = {
+      destinations: [destinationIds[0], destinationIds[1]], // destinationIds[0] already exists in the trip
+    };
+  
+    // Send request to add destinations to the trip
+    const response = await request(app)
+      .put(`/trips/${trip._id}/addDestinations`)
+      .send(requestData)
+      .expect(400); // Expecting a 400 Bad Request due to duplicate destinations
+  
+    // Check if the response contains the error message indicating duplicate destinations
+    expect(response.body.message).toBe('Some destination IDs are already in the trip');
+    expect(response.body.duplicates).toEqual(expect.arrayContaining([destinationIds[0].toString()]));
+  });
+  
+
   it('should delete destinations from a trip', async () => {
     const trip = new Trip({
       name: 'Trip to update',
@@ -210,6 +238,22 @@ describe('Trip API', () => {
       .send({ destinations: destinationIds })
       .expect(404);
 
+    expect(response.body.message).toBe('Trip not found');
+  });
+
+  it('should return 404 if trip not found when removing destinations', async () => {
+    // Prepare data for the request, specifying the destinations to remove
+    const updatedData = {
+      destinations: [destinationIds[0].toString()], // Assuming you want to remove the first destination
+    };
+  
+    // Send a PUT request to remove destinations from a non-existent trip
+    const response = await request(app)
+      .put(`/trips/123456789012345678901234/removeDestinations`)
+      .send(updatedData)
+      .expect(404);
+  
+    // Ensure that the response contains the expected error message
     expect(response.body.message).toBe('Trip not found');
   });
 

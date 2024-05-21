@@ -74,8 +74,16 @@ tripRouter.put('/:id/addDestinations', async (req, res) => {
       return res.status(404).json({ message: 'Trip not found' });
     }
 
-    const destinations = req.body.destinations.map((id: string) => new mongoose.Types.ObjectId(id));
-    trip.destinations.push(...destinations);
+    const newDestinationIds = req.body.destinations.map((id : any) => new mongoose.Types.ObjectId(id));
+    const existingDestinationIds = trip.destinations.map((id : any ) => id.toString());
+
+    const duplicates = newDestinationIds.filter((id : any) => existingDestinationIds.includes(id.toString()));
+
+    if (duplicates.length > 0) {
+      return res.status(400).json({ message: 'Some destination IDs are already in the trip', duplicates });
+    }
+
+    trip.destinations.push(...newDestinationIds);
     await trip.save();
 
     res.status(200).json(trip);
@@ -84,23 +92,30 @@ tripRouter.put('/:id/addDestinations', async (req, res) => {
   }
 });
 
-// Remove destinations from a trip
 tripRouter.put('/:id/removeDestinations', async (req, res) => {
-    try {
-      const trip = await Trip.findById(req.params.id);
-      if (!trip) {
-        return res.status(404).json({ message: 'Trip not found' });
-      }
-  
-      const destinationsToRemove = req.body.destinations.map((id: string) => id);
-      trip.destinations = trip.destinations.filter(dest => !destinationsToRemove.includes(dest.toString()));
-      await trip.save();
-  
-      res.status(200).json(trip);
-    } catch (error) {
-      res.status(500).json({ message: 'Failed to remove destinations from trip', error });
+  try {
+    const trip = await Trip.findById(req.params.id);
+    if (!trip) {
+      return res.status(404).json({ message: 'Trip not found' });
     }
-  });
+
+    const destinationsToRemove = req.body.destinations.map((id :string) => id);
+    const updatedDestinations = trip.destinations.filter(dest => !destinationsToRemove.includes(dest.toString()));
+
+    // Check if any destination IDs were actually removed
+    if (updatedDestinations.length === trip.destinations.length) {
+      return res.status(400).json({ message: 'No matching destinations found to remove' });
+    }
+
+    trip.destinations = updatedDestinations;
+    await trip.save();
+
+    res.status(200).json(trip);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to remove destinations from trip', error });
+  }
+});
+
 
 // Find trip based on ID
 tripRouter.get('/:id', async (req, res) => {
