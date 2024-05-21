@@ -3,6 +3,10 @@ import Layout from "../Layout";
 import deleteIcon from "../../assets/delete.png";
 import useDestination from "./hooks/useDestination";
 import useTrip from "./hooks/useTrip";
+import {
+  removeDestinationsFromTrip,
+  addDestinationsToTrip,
+} from "../../services/api";
 
 function Admin() {
   const {
@@ -20,6 +24,7 @@ function Admin() {
     searchDestinationQuery,
     setSearchDestinationQuery,
   } = useDestination();
+
   const {
     trips,
     tripData,
@@ -30,8 +35,6 @@ function Admin() {
     handleTripSubmit,
     handleDeleteTrip,
     handleUpdateTrip,
-    handleRemoveDestinationFromTrip,
-    handleAddDestinationToTrip,
     searchQuery,
     setSearchQuery,
   } = useTrip();
@@ -40,6 +43,38 @@ function Admin() {
     fetchAndSetTrips();
     fetchAndSetDestinations();
   }, []);
+
+  const handleRemoveDestinationFromTrip = async (tripId: string) => {
+    const destinationIds = destinationId.split(", ").map(id => id.trim());
+    try {
+      await removeDestinationsFromTrip(tripId, { destinations: destinationIds });
+      alert("Destinations removed from trip successfully!");
+      setDestinationId("");
+      fetchAndSetTrips();
+    } catch (error : any) {
+      let errorMessage = 'Error creating trip. Please try again later.';
+      if (error.response && error.response.status) {
+          errorMessage = `Error creating trip: HTTP ${error.response.status}`;
+      }
+      alert(errorMessage);
+  }
+  };
+
+  const handleAddDestinationToTrip = async (tripId: string) => {
+    const destinationIds = destinationId.split(", ").map(id => id.trim());
+    try {
+      await addDestinationsToTrip(tripId, { destinations: destinationIds });
+      alert("Destinations added to trip successfully!");
+      setDestinationId("");
+      fetchAndSetTrips();
+    } catch (error : any) {
+      let errorMessage = 'Error creating trip. Please try again later.';
+      if (error.response && error.response.status) {
+          errorMessage = `Error creating trip: HTTP ${error.response.status}`;
+      }
+      alert(errorMessage);
+  }
+  };
 
   return (
     <Layout>
@@ -326,7 +361,10 @@ function Admin() {
                   type="text"
                   placeholder="Destination ID"
                   value={destinationId}
-                  onChange={(e) => setDestinationId(e.target.value)}
+                  onChange={(e) => {
+                    console.log(e.target.value);
+                    setDestinationId(e.target.value);
+                  }}
                   className="border p-2 mr-2 w-40 text-xs"
                 />
                 <button

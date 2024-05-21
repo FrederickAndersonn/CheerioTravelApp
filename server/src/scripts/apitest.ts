@@ -11,7 +11,7 @@ import {
     searchTrips,
     getTripsByDestination,
     getDestinationsFromTrip
-  } from '../services/api'; // Update the path to your API file
+  } from '../../../client/src/services/api'; // Update the path to your API file
   
   async function testApiFunctions() {
     try {

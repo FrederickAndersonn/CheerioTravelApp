@@ -26,7 +26,7 @@ const Home: React.FC = () => {
         }
       );
 
-      clearTimeout(timeoutId); // Clear the timeout
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         setAccess(true);
