@@ -68,6 +68,15 @@ const Destination = () => {
       }
 
       const timeDifference = tripDate - now;
+
+      if (timeDifference < 0) {
+        const days = 0;
+        const hours = 0;
+        const minutes = 0;
+        const seconds = 0;
+        setTimeLeft(`${days} ${hours} ${minutes} ${seconds}`);
+        return;
+      }
       const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
         (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
