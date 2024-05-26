@@ -54,6 +54,15 @@ export const searchDestinationsByName = async (name: string) => {
   return response.data;
 };
 
+export const checkDestinationExistence = async (id: string) => {
+  try {
+    await getDestinationById(id);
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
+
 // Trips API
 export const createTrip = async (data: ITrip) => {
   const response = await api.post('/trips', data);

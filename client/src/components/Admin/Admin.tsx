@@ -45,35 +45,35 @@ function Admin() {
   }, []);
 
   const handleRemoveDestinationFromTrip = async (tripId: string) => {
-    const destinationIds = destinationId.split(", ").map(id => id.trim());
+    const destinationIds = destinationId.split(", ").map((id) => id.trim());
     try {
-      await removeDestinationsFromTrip(tripId, { destinations: destinationIds });
+      await removeDestinationsFromTrip(tripId, {
+        destinations: destinationIds,
+      });
       alert("Destinations removed from trip successfully!");
       setDestinationId("");
       fetchAndSetTrips();
-    } catch (error : any) {
-      let errorMessage = 'Error creating trip. Please try again later.';
-      if (error.response && error.response.status) {
-          errorMessage = `Error creating trip: HTTP ${error.response.status}`;
-      }
+    } catch (error: any) {
+      let errorMessage =
+        "Error removing destinations from trip. Please try again later." +
+        JSON.stringify(error.response.data);
       alert(errorMessage);
-  }
+    }
   };
 
   const handleAddDestinationToTrip = async (tripId: string) => {
-    const destinationIds = destinationId.split(", ").map(id => id.trim());
+    const destinationIds = destinationId.split(", ").map((id) => id.trim());
     try {
       await addDestinationsToTrip(tripId, { destinations: destinationIds });
       alert("Destinations added to trip successfully!");
       setDestinationId("");
       fetchAndSetTrips();
-    } catch (error : any) {
-      let errorMessage = 'Error creating trip. Please try again later.';
-      if (error.response && error.response.status) {
-          errorMessage = `Error creating trip: HTTP ${error.response.status}`;
-      }
+    } catch (error: any) {
+      let errorMessage =
+        "Error Adding Destination to Trip. Please try again later." +
+        JSON.stringify(error.response.data);
       alert(errorMessage);
-  }
+    }
   };
 
   return (
@@ -182,7 +182,7 @@ function Admin() {
           />
           <input
             type="text"
-            placeholder="Destinations (comma-separated. , + space)"
+            placeholder="Destinations (Destination IDs comma-separated. , + space)"
             value={tripData.destinations.join(", ")}
             onChange={(e) =>
               setTripData({
@@ -311,7 +311,7 @@ function Admin() {
           />
           <input
             type="text"
-            placeholder="Destinations (comma-separated. , + space)"
+            placeholder="Destinations (Destination IDs comma-separated. , + space)"
             value={tripData.destinations.join(", ")}
             onChange={(e) =>
               setTripData({
@@ -359,7 +359,7 @@ function Admin() {
               <div className="flex mt-2">
                 <input
                   type="text"
-                  placeholder="Destination ID"
+                  placeholder="(Destination IDs comma-separated. , + space)"
                   value={destinationId}
                   onChange={(e) => {
                     console.log(e.target.value);
