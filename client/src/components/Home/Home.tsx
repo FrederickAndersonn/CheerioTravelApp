@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logowhite.png";
 import { Data } from "./data";
-import TriviaPopup from "../Trivia";
+import TriviaPopup from "./Trivia";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
