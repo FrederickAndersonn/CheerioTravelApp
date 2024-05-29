@@ -66,15 +66,16 @@ Cheerio Travel App is a platform where users can search for trips and destinatio
    ```
 
 ### Frontend Setup
-1. Navigate to the frontend directory:
+1. Open New Terminal
+2. Navigate to the frontend directory:
    ```sh
    cd client
    ```
-2. Install dependencies:
+3. Install dependencies:
    ```sh
    npm install
    ```
-3. Start the frontend development server:
+4. Start the frontend development server:
    ```sh
    npm run dev
    ```
