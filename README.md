@@ -1,4 +1,22 @@
+# Table of Contents
+1. [Cheerio Travel App](#cheerio-travel-app)
+2. [Description](#description)
+3. [Features](#features)
+   - [Main Functionality](#main-functionality)
+   - [Freestyle Functionality](#freestyle-functionality)
+4. [Installation](#installation)
+   - [Prerequisites](#prerequisites)
+   - [Backend Setup](#backend-setup)
+   - [Frontend Setup](#frontend-setup)
+5. [Usage](#usage)
+   - [Backend Tests](#backend-tests)
+6. [Technologies Used](#technologies-used)
+7. [Routes Structure](#routes-structure)
+   - [Backend Routes](#backend-routes)
+   - [Frontend Routes](#frontend-routes)
+8. [Contributing](#contributing)
 # Cheerio Travel App
+![Main Window](/pictures/main.png "Main Window")
 
 ## Description
 Cheerio Travel App is a platform where users can search for trips and destinations. Admins can create, update, and delete trips and destinations. The app also provides additional features like trivia to access the admin page, current weather information for each destination, and a countdown till the trip date.
@@ -11,10 +29,15 @@ Cheerio Travel App is a platform where users can search for trips and destinatio
 
 ### Freestyle Functionality
 1. Separate Admin and User Pages.
+![User](/pictures/user.png "User")
+![Admin](/pictures/admin.png "Admin")
 2. Trivia game to access the Admin Page (using an external API).
+![Trivia](/pictures/trivia.png "Trivia")
 3. Current weather information for each destination (using an external API).
 4. Countdown timer until the trip date
+![Weather and Timer](/pictures/weather.png "Weather")
 5. Add Participants to trip (By Inputing name)
+![Participants](/pictures/participants.png "Participants")
 
 ## Installation
 
