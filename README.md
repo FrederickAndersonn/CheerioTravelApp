@@ -15,6 +15,7 @@
    - [Backend Routes](#backend-routes)
    - [Frontend Routes](#frontend-routes)
 8. [Contributing](#contributing)
+
 # Cheerio Travel App
 ![Main Window](/pictures/main.png "Main Window")
 
@@ -82,6 +83,9 @@ Cheerio Travel App is a platform where users can search for trips and destinatio
 1. Open your web browser and go to the port shown after running `npm run dev`.
 2. Navigate through the app to explore trips and destinations.
 3. Admins can log in through the Admin Page using a trivia game.
+4. Creating Updating Data. You can Put More than one Data with comma (Ex: 6626475d5f04e7d7bd73871e, 6652f36d4315a8c3e9760e47). For Updating You can just put in the data you want to update and let the rest be nothing. 
+![Create](/pictures/create.png "create")
+![Update](/pictures/update.png "update")
 
 ### Backend Tests
 1. Navigate to the server directory:
