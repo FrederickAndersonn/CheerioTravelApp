@@ -17,7 +17,7 @@ const Home: React.FC = () => {
 
   const fetchTriviaQuestion = async () => {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000); // Timeout after 10 seconds
+
     try {
       const response = await fetch(
         "https://opentdb.com/api.php?amount=1&category=18&difficulty=easy&type=multiple",
@@ -25,13 +25,6 @@ const Home: React.FC = () => {
           signal: controller.signal,
         }
       );
-
-      clearTimeout(timeoutId);
-
-      if (!response.ok) {
-        setAccess(true);
-        throw new Error("Failed to fetch trivia question");
-      }
 
       const data = await response.json();
       const question = data.results[0].question;
