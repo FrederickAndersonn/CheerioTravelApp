@@ -2,6 +2,7 @@ import express from 'express';
 import  Trip  from '../models/Trip';
 import  Destination from '../models/Destination';
 import mongoose from 'mongoose';
+import { AnyARecord } from 'dns';
 
 const tripRouter = express.Router();
 
@@ -134,7 +135,7 @@ tripRouter.get('/', async (req, res) => {
   try {
     const { name, dateFrom, dateTo } = req.query;
 
-    const query: any = {};
+    const query : any = {};
 
     if (name) {
       query.name = { $regex: new RegExp(name as string, 'i') };
@@ -144,7 +145,7 @@ tripRouter.get('/', async (req, res) => {
       query.date = {};
       if (dateFrom) {
         const parsedDateFrom = new Date(dateFrom as string);
-        if (!isNaN(parsedDateFrom.getTime())) {
+        if (!isNaN(parsedDateFrom.getTime()) && /^\d{4}-\d{2}-\d{2}$/.test(dateFrom as string)) {
           query.date.$gte = parsedDateFrom;
         } else {
           return res.status(400).json({ message: 'Invalid from date format' });
@@ -152,7 +153,7 @@ tripRouter.get('/', async (req, res) => {
       }
       if (dateTo) {
         const parsedDateTo = new Date(dateTo as string);
-        if (!isNaN(parsedDateTo.getTime())) {
+        if (!isNaN(parsedDateTo.getTime()) && /^\d{4}-\d{2}-\d{2}$/.test(dateTo as string)) {
           query.date.$lte = parsedDateTo;
         } else {
           return res.status(400).json({ message: 'Invalid to date format' });
@@ -166,6 +167,7 @@ tripRouter.get('/', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch trips', error });
   }
 });
+
 
 
 // Find trips based on destination
