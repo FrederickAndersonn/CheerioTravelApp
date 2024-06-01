@@ -199,7 +199,8 @@ function Admin() {
             Create Trip
           </button>
 
-          <h2 className="text-xl font-bold mt-8 mb-4">Update Destination</h2>
+          <h2 className="text-xl font-bold mt-8 mb-2">Update Destination</h2>
+          <h2 className="text-md font-bol mb-4">Only Input The Fields You Want To Update and Leave Other Fields Blank.</h2>
           <input
             type="text"
             placeholder="ID"
@@ -258,7 +259,8 @@ function Admin() {
             Update Destination
           </button>
 
-          <h2 className="text-xl font-bold mt-8 mb-4">Update Trip</h2>
+          <h2 className="text-xl font-bold mt-8 mb-2">Update Trip</h2>
+          <h2 className="text-md font-bol mb-4">Only Input The Fields You Want To Update and Leave Other Fields Blank.</h2>
           <input
             type="text"
             placeholder="ID"
