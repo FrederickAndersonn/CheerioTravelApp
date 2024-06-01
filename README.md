@@ -43,9 +43,9 @@ Cheerio Travel App is a platform where users can search for trips and destinatio
 ## Installation
 
 ### Prerequisites
-- Node.js (version 14.x or higher)
-- npm (version 6.x or higher) or yarn (version 1.x or higher)
-- MongoDB (version 4.x or higher)
+- Node.js
+- npm
+- MongoDB 
 
 ### Backend Setup
 1. Clone the repository:
