@@ -100,7 +100,6 @@ export const getTripById = async (id: string) => {
 };
 
 export const searchTrips = async (params?: { name?: string, dateFrom?: string, dateTo?: string }) => {
-  console.log("Searching trips with params: ", params);
   const response = await api.get('/trips', { params });
   return response.data;
 };
