@@ -11,13 +11,14 @@ const Trips = () => {
   const navigate = useNavigate();
   const [trips, setTrips] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [dateFilter, setDateFilter] = useState("");
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
   const [destinations, setDestinations] = useState([]);
   const [selectedDestination, setSelectedDestination] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await searchTrips({ name: searchTerm, date: dateFilter });
+      const data = await searchTrips({ name: searchTerm, dateFrom, dateTo });
       setTrips(data);
     };
 
@@ -28,7 +29,7 @@ const Trips = () => {
 
     fetchData();
     fetchDestinations();
-  }, [searchTerm, dateFilter]);
+  }, [searchTerm, dateFrom, dateTo]);
 
   const handleExploreClick = (trip: any) => {
     navigate(`/destination/${trip._id}`);
@@ -36,7 +37,7 @@ const Trips = () => {
 
   const handleDestinationChange = async (destinationId: string) => {
     if (destinationId === "") {
-      const data = await searchTrips({ name: searchTerm, date: dateFilter });
+      const data = await searchTrips({ name: searchTerm, dateFrom, dateTo });
       setTrips(data);
       setSelectedDestination("");
     } else {
@@ -49,32 +50,50 @@ const Trips = () => {
   return (
     <Layout>
       <div className="container mx-auto p-4">
-        <div className="flex justify-between items-center mb-4">
-          <div className="w-1/2">
+        <div className="flex justify-between items-center mb-4 gap-4">
+          <div className="w-1/4">
+          <label htmlFor="destination" className="mr-2">
+              Search by Name:
+            </label>
             <input
               type="text"
               placeholder="Search by Name"
-              className="border p-2 rounded w-3/4 m-auto"
+              className="border p-2 rounded w-full"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          <div className="w-1/2">
+          <div className="w-1/4">
+          <label htmlFor="destination" className="mr-2">
+              From:
+            </label>
             <input
               type="date"
-              placeholder="Filter by Date"
-              className="border p-2 rounded w-3/4 m-auto"
-              value={dateFilter}
-              onChange={(e) => setDateFilter(e.target.value)}
+              placeholder="From Date"
+              className="border p-2 rounded w-full"
+              value={dateFrom}
+              onChange={(e) => setDateFrom(e.target.value)}
             />
           </div>
-          <div className="relative">
+          <div className="w-1/4">
+          <label htmlFor="destination" className="mr-2">
+             To:
+            </label>
+            <input
+              type="date"
+              placeholder="To Date"
+              className="border p-2 rounded w-full"
+              value={dateTo}
+              onChange={(e) => setDateTo(e.target.value)}
+            />
+          </div>
+          <div className="relative w-1/4">
             <label htmlFor="destination" className="mr-2">
               Search by Destinations:
             </label>
             <select
               id="destination"
-              className="border p-2 rounded"
+              className="border p-2 rounded w-full"
               value={selectedDestination}
               onChange={(e) => handleDestinationChange(e.target.value)}
             >

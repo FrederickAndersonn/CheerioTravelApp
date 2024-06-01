@@ -195,7 +195,6 @@ it('should create a new destination', async () => {
 
   await new Promise((resolve) => setTimeout(resolve, 1000));
   
-  console.log(response.body);
   expect(response.status).toBe(201);
   expect(response.body).toHaveProperty('_id');
   expect(response.body.name).toBe(destination.name);

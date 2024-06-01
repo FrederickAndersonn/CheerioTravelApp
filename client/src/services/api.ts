@@ -99,10 +99,11 @@ export const getTripById = async (id: string) => {
   return response.data;
 };
 
-export const searchTrips = async (params?: {name?: string, date?: string}) => {
-    const response = await api.get('/trips', { params });
-    return response.data;
+export const searchTrips = async (params?: { name?: string, dateFrom?: string, dateTo?: string }) => {
+  const response = await api.get('/trips', { params });
+  return response.data;
 };
+
 
 export const getTripsByDestination = async (id: string) => {
   const response = await api.get(`/trips/byDestination/${id}`);

@@ -130,10 +130,9 @@ tripRouter.get('/:id', async (req, res) => {
   }
 });
 
-// Find trips based on name or date or both
 tripRouter.get('/', async (req, res) => {
   try {
-    const { name, date } = req.query;
+    const { name, dateFrom, dateTo } = req.query;
 
     const query: any = {};
 
@@ -141,9 +140,24 @@ tripRouter.get('/', async (req, res) => {
       query.name = { $regex: new RegExp(name as string, 'i') };
     }
 
-    if (date) {
-      const parsedDate = new Date(date as string);
-      query.date = parsedDate
+    if (dateFrom || dateTo) {
+      query.date = {};
+      if (dateFrom) {
+        const parsedDateFrom = new Date(dateFrom as string);
+        if (!isNaN(parsedDateFrom.getTime())) {
+          query.date.$gte = parsedDateFrom;
+        } else {
+          return res.status(400).json({ message: 'Invalid from date format' });
+        }
+      }
+      if (dateTo) {
+        const parsedDateTo = new Date(dateTo as string);
+        if (!isNaN(parsedDateTo.getTime())) {
+          query.date.$lte = parsedDateTo;
+        } else {
+          return res.status(400).json({ message: 'Invalid to date format' });
+        }
+      }
     }
 
     const trips = await Trip.find(query);
@@ -152,6 +166,7 @@ tripRouter.get('/', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch trips', error });
   }
 });
+
 
 // Find trips based on destination
 tripRouter.get('/byDestination/:id', async (req, res) => {

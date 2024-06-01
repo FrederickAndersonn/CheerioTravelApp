@@ -276,40 +276,73 @@ describe('Trip API', () => {
     expect(response.body[0].name).toBe('Trip 1');
   });
   
-  it('should find trips based on date', async () => {
-    const tripData = [
-      { name: 'Trip 1', description: 'Description of trip 1', imageUrl: 'image-url', participants: [], destinations: [], date: '2022-01-01' },
-      { name: 'Trip 2', description: 'Description of trip 2', imageUrl: 'image-url', participants: [], destinations: [], date: '2022-01-02' },
-      { name: 'Trip 3', description: 'Description of trip 3', imageUrl: 'image-url', participants: [], destinations: [], date: '2022-01-03' },
-    ];
   
-    await Trip.insertMany(tripData);
+  describe('Trip API Date Range Filtering', () => {
+    beforeEach(async () => {
+      const tripData = [
+        { name: 'Trip 1', description: 'Description of trip 1', imageUrl: 'image-url', participants: [], destinations: [], date: '2022-01-01' },
+        { name: 'Trip 2', description: 'Description of trip 2', imageUrl: 'image-url', participants: [], destinations: [], date: '2022-01-15' },
+        { name: 'Trip 3', description: 'Description of trip 3', imageUrl: 'image-url', participants: [], destinations: [], date: '2022-02-01' },
+      ];
   
-    const response = await request(app)
-      .get('/trips')
-      .query({ date: '2022-01-02' })
-      .expect(200);
+      await Trip.insertMany(tripData);
+    });
   
-    expect(response.body.length).toBe(1);
+    it('should find trips within a date range', async () => {
+      const response = await request(app)
+        .get('/trips')
+        .query({ dateFrom: '2022-01-01', dateTo: '2022-01-31' })
+        .expect(200);
+  
+      expect(response.body.length).toBe(2);
+      expect(response.body).toEqual(expect.arrayContaining([
+        expect.objectContaining({ name: 'Trip 1' }),
+        expect.objectContaining({ name: 'Trip 2' }),
+      ]));
+    });
+  
+    it('should find trips from a specific start date', async () => {
+      const response = await request(app)
+        .get('/trips')
+        .query({ dateFrom: '2022-01-10' })
+        .expect(200);
+  
+      expect(response.body.length).toBe(2);
+      expect(response.body).toEqual(expect.arrayContaining([
+        expect.objectContaining({ name: 'Trip 2' }),
+        expect.objectContaining({ name: 'Trip 3' }),
+      ]));
+    });
+  
+    it('should find trips up to a specific end date', async () => {
+      const response = await request(app)
+        .get('/trips')
+        .query({ dateTo: '2022-01-10' })
+        .expect(200);
+  
+      expect(response.body.length).toBe(1);
+      expect(response.body[0].name).toBe('Trip 1');
+    });
+  
+    it('should return an empty array if no trips fall within the date range', async () => {
+      const response = await request(app)
+        .get('/trips')
+        .query({ dateFrom: '2023-01-01', dateTo: '2023-01-31' })
+        .expect(200);
+  
+      expect(response.body.length).toBe(0);
+    });
+  
+    it('should return an error for invalid date formats', async () => {
+      const response = await request(app)
+        .get('/trips')
+        .query({ dateFrom: 'invalid-date', dateTo: '2022-01-31' })
+        .expect(400);
+  
+      expect(response.body.message).toBe('Invalid from date format');
+    });
   });
   
-  it('should find trips based on name and date', async () => {
-    const tripData = [
-      { name: 'Trip 1', description: 'Description of trip 1', imageUrl: 'image-url', participants: [], destinations: [], date: '2022-01-01' },
-      { name: 'Trip 2', description: 'Description of trip 2', imageUrl: 'image-url', participants: [], destinations: [], date: '2022-01-02' },
-      { name: 'Trip 3', description: 'Description of trip 3', imageUrl: 'image-url', participants: [], destinations: [], date: '2022-01-03' },
-    ];
-  
-    await Trip.insertMany(tripData);
-  
-    const response = await request(app)
-      .get('/trips')
-      .query({ name: 'Trip 1', date: '2022-01-01' })
-      .expect(200);
-
-    expect(response.body.length).toBe(1);
-    expect(response.body[0].name).toBe('Trip 1');
-  });
   
 
   it('should find trips based on destination', async () => {

@@ -124,7 +124,7 @@ Cheerio Travel App is a platform where users can search for trips and destinatio
 - `PUT /trips/:id/addDestinations` - Add destinations to a trip
 - `PUT /trips/:id/removeDestinations` - Remove destinations from a trip
 - `GET /trips/:id` - Get a trip by ID
-- `GET /trips` - Find trips based on name or date
+- `GET /trips` - Find trips based on name or date(From: Date to: Date)
 - `GET /trips/byDestination/:id` - Find trips based on destination
 - `PUT /trips/:id/addParticipants` - Add participants to a trip
 
