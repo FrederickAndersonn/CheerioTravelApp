@@ -4,13 +4,6 @@ import app from '../destinationindex'; // Assuming your Express app is exported 
 import  Destination  from '../models/Destination';
 
 
-beforeAll(async () => {
-    await mongoose.connect('mongodb://localhost:27017/test', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as any);
-  });
-
   afterEach(async () => {
     await Destination.deleteMany({});
   });
@@ -202,6 +195,7 @@ it('should create a new destination', async () => {
 
   await new Promise((resolve) => setTimeout(resolve, 1000));
   
+  console.log(response.body);
   expect(response.status).toBe(201);
   expect(response.body).toHaveProperty('_id');
   expect(response.body.name).toBe(destination.name);

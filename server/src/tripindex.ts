@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 
 
 const app = express();
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/test', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://test:test@cluster0.v2nfrdi.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 } as any).then(() => {
