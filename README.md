@@ -97,6 +97,7 @@ Cheerio Travel App is a platform where users can search for trips and destinatio
    ```sh
    npm test
    ```
+![Tests](/pictures/test.png "Tests")
 
 ## Technologies Used
 - **Backend**: Node.js, Express, MongoDB, Mongoose, Jest, Nodemon
