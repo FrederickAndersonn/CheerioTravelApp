@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ChangeEvent } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   searchTrips,
@@ -7,43 +7,23 @@ import {
 } from "../services/api";
 import Layout from "./Layout";
 
-// Define types for Trip, Destination, and SearchParams
-interface Trip {
-  _id: string;
-  name: string;
-  date: string;
-  imageUrl: string;
-  participants: string[];
-}
-
-interface Destination {
-  _id: string;
-  name: string;
-}
-
-interface SearchParams {
-  name: string;
-  dateFrom: string;
-  dateTo: string;
-}
-
-const Trips: React.FC = () => {
+const Trips = () => {
   const navigate = useNavigate();
-  const [trips, setTrips] = useState<Trip[]>([]);
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [dateFrom, setDateFrom] = useState<string>("");
-  const [dateTo, setDateTo] = useState<string>("");
-  const [destinations, setDestinations] = useState<Destination[]>([]);
-  const [selectedDestination, setSelectedDestination] = useState<string>("");
+  const [trips, setTrips] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
+  const [destinations, setDestinations] = useState([]);
+  const [selectedDestination, setSelectedDestination] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
-      const data: Trip[] = await searchTrips({ name: searchTerm, dateFrom, dateTo });
+      const data = await searchTrips({ name: searchTerm, dateFrom, dateTo });
       setTrips(data);
     };
 
     const fetchDestinations = async () => {
-      const data: Destination[] = await getAllDestinations();
+      const data = await getAllDestinations();
       setDestinations(data);
     };
 
@@ -51,33 +31,19 @@ const Trips: React.FC = () => {
     fetchDestinations();
   }, [searchTerm, dateFrom, dateTo]);
 
-  const handleExploreClick = (trip: Trip): void => {
+  const handleExploreClick = (trip: any) => {
     navigate(`/destination/${trip._id}`);
   };
 
-  const handleDestinationChange = async (destinationId: string): Promise<void> => {
+  const handleDestinationChange = async (destinationId: string) => {
     if (destinationId === "") {
-      const data: Trip[] = await searchTrips({ name: searchTerm, dateFrom, dateTo });
+      const data = await searchTrips({ name: searchTerm, dateFrom, dateTo });
       setTrips(data);
       setSelectedDestination("");
     } else {
       setSelectedDestination(destinationId);
-      const tripsByDestination: Trip[] = await getTripsByDestination(destinationId);
+      const tripsByDestination = await getTripsByDestination(destinationId);
       setTrips(tripsByDestination);
-    }
-  };
-
-  const handleDateChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (event: ChangeEvent<HTMLInputElement>): void => {
-    const dateValue = event.target.value;
-    if (dateValue) {
-      const parsedDate = new Date(dateValue);
-      if (!isNaN(parsedDate.getTime())) {
-        const formattedDate = parsedDate.toISOString().split("T")[0];
-        console.log(formattedDate);
-        setter(formattedDate);
-      }
-    } else {
-      setter("");
     }
   };
 
@@ -86,12 +52,11 @@ const Trips: React.FC = () => {
       <div className="container mx-auto p-4">
         <div className="flex justify-between items-center mb-4 gap-4">
           <div className="w-1/4">
-            <label htmlFor="searchTerm" className="mr-2">
+          <label htmlFor="destination" className="mr-2">
               Search by Name:
             </label>
             <input
               type="text"
-              id="searchTerm"
               placeholder="Search by Name"
               className="border p-2 rounded w-full"
               value={searchTerm}
@@ -99,29 +64,27 @@ const Trips: React.FC = () => {
             />
           </div>
           <div className="w-1/4">
-            <label htmlFor="dateFrom" className="mr-2">
+          <label htmlFor="destination" className="mr-2">
               From:
             </label>
             <input
               type="date"
-              id="dateFrom"
               placeholder="From Date"
               className="border p-2 rounded w-full"
               value={dateFrom}
-              onChange={handleDateChange(setDateFrom)}
+              onChange={(e) => setDateFrom(e.target.value)}
             />
           </div>
           <div className="w-1/4">
-            <label htmlFor="dateTo" className="mr-2">
-              To:
+          <label htmlFor="destination" className="mr-2">
+             To:
             </label>
             <input
               type="date"
-              id="dateTo"
               placeholder="To Date"
               className="border p-2 rounded w-full"
               value={dateTo}
-              onChange={handleDateChange(setDateTo)}
+              onChange={(e) => setDateTo(e.target.value)}
             />
           </div>
           <div className="relative w-1/4">
@@ -135,7 +98,7 @@ const Trips: React.FC = () => {
               onChange={(e) => handleDestinationChange(e.target.value)}
             >
               <option value="">All Destinations</option>
-              {destinations.map((destination) => (
+              {destinations.map((destination: any) => (
                 <option key={destination._id} value={destination._id}>
                   {destination.name}
                 </option>
@@ -144,7 +107,7 @@ const Trips: React.FC = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {trips.map((trip) => (
+          {trips.map((trip: any) => (
             <div key={trip._id} className="border p-4 rounded">
               <h2 className="text-xl font-bold">{trip.name}</h2>
               <img
@@ -157,7 +120,11 @@ const Trips: React.FC = () => {
               </p>
               <p>
                 Participants:{" "}
-                {trip.participants.filter((participant) => participant !== "").length}
+                {
+                  trip.participants.filter(
+                    (participant: any) => participant !== ""
+                  ).length
+                }
               </p>
               <button
                 className="bg-custom-black text-white px-4 py-2 rounded mt-2"
