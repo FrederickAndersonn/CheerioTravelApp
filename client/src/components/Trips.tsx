@@ -73,6 +73,7 @@ const Trips: React.FC = () => {
       const parsedDate = new Date(dateValue);
       if (!isNaN(parsedDate.getTime())) {
         const formattedDate = parsedDate.toISOString().split("T")[0];
+        console.log(formattedDate);
         setter(formattedDate);
       }
     } else {
